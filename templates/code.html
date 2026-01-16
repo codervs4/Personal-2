@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jarvis Code Lab</title>
+
+  <!-- Monaco Loader -->
+  <script src="https://unpkg.com/monaco-editor@0.44.0/min/vs/loader.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      background: #0a0a0a;
+      color: #0ff;
+      font-family: monospace;
+    }
+    #editor {
+      height: 90vh;
+      border-top: 1px solid #0ff;
+    }
+    button {
+      background: black;
+      color: #0ff;
+      border: 1px solid #0ff;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>🧠 Jarvis Code Lab</h2>
+
+<form method="post">
+  <input type="hidden" name="code" id="code">
+  <button onclick="saveCode()">💾 Save</button>
+</form>
+
+<div id="editor"></div>
+
+<script>
+  let editor;
+
+  require.config({ paths: { vs: "https://unpkg.com/monaco-editor@0.44.0/min/vs" }});
+  require(["vs/editor/editor.main"], function () {
+    editor = monaco.editor.create(document.getElementById("editor"), {
+      value: `{{ code | safe }}`,
+      language: "python",
+      theme: "vs-dark",
+      automaticLayout: true,
+      fontSize: 14
+    });
+  });
+
+  function saveCode() {
+    document.getElementById("code").value = editor.getValue();
+  }
+</script>
+
+</body>
+</html>
