@@ -1,0 +1,1 @@
+This folder stores uploaded resumes or CVs.

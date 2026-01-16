@@ -1,0 +1,1 @@
+This folder stores general uploaded files, like PDFs, images, or documents.
